@@ -9,30 +9,30 @@
 
 ## Proyecto X
 
-| Carpetas         | Descripción |
-| ---------------- | ----------- |
-| **node_modules** |             |
-| **src**          |             |
-| **controllers**  |             |
-| **models**       |             |
-| **routes**       |             |
+| Carpetas         | Descripción                                                                                                       |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **node_modules** | Contendrá los paquetes y funcionalidades para NodeJs.                                                             |
+| **src**          | Tendra los archivos y carpetas para el funcionamiento de backend.                                                 |
+| **controllers**  | Son archivos que son responsables de manejar las solicitudes del usuario y devolver las respuestas apropiadas..   |
+| **models**       | Los modelos se utilizan a menudo en aplicaciones web para representar datos de usuarios, productos , entre otras. |
+| **routes**       | Es una carpeta que contiene los archivos JavaScript que definen las rutas de la aplicación.                       |
 
-| Archivos         | Descripción |
-| ---------------- | ----------- |
-| **package.json** |             |
-| **.env**         |             |
-| **app.js**       |             |
-| **db.js**        |             |
-| **index.js.js**  |             |
+| Archivos         | Descripción                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| **package.json** | Es un archivo de configuración que se utiliza en los proyectos de Node.js.                  |
+| **.env**         | Es un archivo de configuración que se utiliza para almacenar variables de entorno.          |
+| **app.js**       | Se encarga de importar middlewares, las rutas de solicutdes y enviarlas al archivo index.js |
+| **db.js**        | Este archivo se encarga de conectar la base de datos con el entorno de ejecución NodeJs.    |
+| **index.js.js**  | Con este archivo se arranca o enciende el Entorno de ejecución.                             |
 
-| CarpetaControllers        | Descripción |
-| ------------------------- | ----------- |
-| **personasControlles.js** |             |
+| CarpetaControllers        | Descripción                                                                                                          |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **personasControlles.js** | Se encarga de recibir la peticion y enviar la solicitud a la base de datos o viceversa con la respuesta del usuario. |
 
-| CarpetaModels         | Descripción |
-| --------------------- | ----------- |
-| **personasModels.js** |             |
+| CarpetaModels         | Descripción                                                             |
+| --------------------- | ----------------------------------------------------------------------- |
+| **personasModels.js** | Se encarga del modelado de datos que esta definido en la base de datos. |
 
-| CarpetaRoutes         | Descripción |
-| --------------------- | ----------- |
-| **personasRoutes.js** |             |
+| CarpetaRoutes         | Descripción                                                                                       |
+| --------------------- | ------------------------------------------------------------------------------------------------- |
+| **personasRoutes.js** | Este archivo es para crear rutas para distintas peticiones o solicitudes que requiere el usuario. |
