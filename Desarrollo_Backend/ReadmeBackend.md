@@ -27,12 +27,20 @@
 
 | CarpetaControllers        | Descripción                                                                                                          |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **personasControlles.js** | Se encarga de recibir la peticion y enviar la solicitud a la base de datos o viceversa con la respuesta del usuario. |
+| **personasControlles.js** | Se encarga de recibir la petición y enviar la solicitud a la base de datos o viceversa con la respuesta del usuario. |
 
 | CarpetaModels         | Descripción                                                             |
 | --------------------- | ----------------------------------------------------------------------- |
-| **personasModels.js** | Se encarga del modelado de datos que esta definido en la base de datos. |
+| **personasModels.js** | Se encarga del modelado de datos que está definido en la base de datos. |
 
 | CarpetaRoutes         | Descripción                                                                                       |
 | --------------------- | ------------------------------------------------------------------------------------------------- |
 | **personasRoutes.js** | Este archivo es para crear rutas para distintas peticiones o solicitudes que requiere el usuario. |
+
+## Paquetes para NodeJs del ProyectoX
+
+Código ha utilizar durante el proyecto:
+
+```bash
+npm i express dotenv cors bcrypt
+```
