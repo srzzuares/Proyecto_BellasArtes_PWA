@@ -48,4 +48,14 @@ Código ha utilizar durante el proyecto:
 npm i express dotenv cors bcrypt
 ```
 
+```bash
+# Esto es para dependenciasde desarrollo del proyectox
+npm i express nodemon prisma -D
+```
+
+```bash
+# Esto es para dependencias para documentar el codigo del proyectox con swagger
+npm i swagger-jsdoc swagger-ui-express
+```
+
 </div>
