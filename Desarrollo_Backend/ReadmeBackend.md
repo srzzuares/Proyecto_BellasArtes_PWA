@@ -50,7 +50,7 @@ npm i express dotenv cors bcrypt
 
 ```bash
 # Esto es para dependenciasde desarrollo del proyectox
-npm i express nodemon prisma -D
+npm i nodemon prisma -D
 ```
 
 ```bash
