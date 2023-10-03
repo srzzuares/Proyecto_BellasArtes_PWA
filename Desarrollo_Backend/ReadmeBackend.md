@@ -1,7 +1,6 @@
-
 <div align="justify">
 
-  # Desarrollo Backend de la Plataforma "Bellas Artes"
+# Desarrollo Backend de la Plataforma "Bellas Artes"
 
 ### Se crearón dos carpetas para el proyecto:
 
@@ -45,7 +44,18 @@
 Código ha utilizar durante el proyecto:
 
 ```bash
+# Esto es para dependencias del proyectox
 npm i express dotenv cors bcrypt
 ```
- 
+
+```bash
+# Esto es para dependencias de desarrollo del proyectox
+npm i nodemon prisma
+```
+
+```bash
+# Esto es para instalar swagger y sirve para documentar código
+npm i swagger-jsdoc swagger-ui-express
+```
+
 </div>
