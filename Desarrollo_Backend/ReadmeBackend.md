@@ -1,7 +1,6 @@
-
 <div align="justify">
 
-  # Desarrollo Backend de la Plataforma "Bellas Artes"
+# Desarrollo Backend de la Plataforma "Bellas Artes"
 
 ### Se crearón dos carpetas para el proyecto:
 
@@ -45,7 +44,8 @@
 Código ha utilizar durante el proyecto:
 
 ```bash
+# Esto es para dependencias del proyectox
 npm i express dotenv cors bcrypt
 ```
- 
+
 </div>
