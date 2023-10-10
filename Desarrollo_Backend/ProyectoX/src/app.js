@@ -31,7 +31,7 @@ APP.use('/api-doc', swUI.serve, swUI.setup(swJsD(swSp)));
 APP.use(cors());
 APP.use(express.json());
 APP.use(express.urlencoded({extended:false}));
-// APP.use(require('Obras'));
+APP.use(require('./routes/personasRoutes.js'));
 
 // Settings
 APP.set('PORT', process.env.PORT || 5555);

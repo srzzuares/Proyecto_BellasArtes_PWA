@@ -45,7 +45,7 @@ Código ha utilizar durante el proyecto:
 
 ```bash
 # Esto es para dependencias del proyectox
-npm i express dotenv cors bcrypt
+npm i express dotenv cors bcrypt @prisma/client
 ```
 
 ```bash
@@ -56,6 +56,12 @@ npm i nodemon prisma -D
 ```bash
 # Esto es para dependencias para documentar el codigo del proyectox con swagger
 npm i swagger-jsdoc swagger-ui-express
+```
+
+```bash
+# Esto es para inicializar el ORM de prisma
+npx prisma
+npx prisma init
 ```
 
 </div>
