@@ -45,7 +45,7 @@ Código ha utilizar durante el proyecto:
 
 ```bash
 # Esto es para dependencias del proyectox
-npm i express dotenv cors bcrypt @prisma/client
+npm i express dotenv cors bcrypt @prisma/client express-validator
 ```
 
 ```bash
