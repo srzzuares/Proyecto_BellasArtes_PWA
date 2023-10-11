@@ -17,12 +17,12 @@ const swSp = {
         },
         servers: [
             {
-                url : "http://localhost:5005"
+                url : "http://localhost:5999"
             }
         ]
     },
     apis: [
-        `${path.join(__dirname, './routes/obras.Routes.js')}`
+        `${path.join(__dirname, '../routes/personasRoutes.js')}`
     ]
 }
 
