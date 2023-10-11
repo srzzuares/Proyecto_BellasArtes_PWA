@@ -1,0 +1,34 @@
+GET http://localhost:5999/person/ HTTP/1.1
+
+###
+
+GET http://localhost:5999/person/2 HTTP/1.1
+
+###
+POST http://localhost:5999/person/create HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 2,
+    "Nombre": "Crys",
+    "P_Apellido": "Suar",
+    "S_Apellido": "Cuev",
+    "Nacimiento": "2001-03-20T00:00:00.000Z",
+    "Genero": "M"
+}
+
+###
+POST http://localhost:5999/person/put/1 HTTP/1.1
+content-type: application/json
+
+{
+    "Nombre": "Cristalino",
+    "P_Apellido": "Suarez",
+    "S_Apellido": "Suarez",
+    "Nacimiento": "2000-03-20T00:00:00.000Z",
+    "Genero": "M",
+    "Estatus": true
+}
+
+###
+GET http://localhost:5999/person/del/1 HTTP/1.1

@@ -31,11 +31,11 @@ APP.use('/api-doc', swUI.serve, swUI.setup(swJsD(swSp)));
 APP.use(cors());
 APP.use(express.json());
 APP.use(express.urlencoded({extended:false}));
-APP.use(require('./routes/personasRoutes.js'));
+APP.use(require('../routes/personasRoutes.js'));
 
 // Settings
 APP.set('PORT', process.env.PORT || 5555);
-APP.set('RSv', (req,res) => console.log(`Listening on port http://localhost:${APP.get('PORT')}`));
+APP.set('RSv', () => console.log(`Listening on port http://localhost:${APP.get('PORT')}`));
 
 // Export
 module.exports = APP;
