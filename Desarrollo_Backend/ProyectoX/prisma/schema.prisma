@@ -11,8 +11,8 @@ model tbb_artistas {
   Persona_ID          Int            @id @default(autoincrement()) @db.UnsignedInt
   Descripcion_Blog    String?        @db.Text
   Imagen              Bytes?         @db.Blob
-  Estatus             Boolean?
-  Fecha_Registro      DateTime?      @db.DateTime(0)
+  Estatus             Boolean?       @default(true)
+  Fecha_Registro      DateTime?      @default(now()) @db.DateTime(0)
   Fecha_Actualizacion DateTime?      @db.DateTime(0)
   tbb_personas        tbb_personas   @relation(fields: [Persona_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_artistas_ibfk_1")
   tbb_pinturas        tbb_pinturas[]
@@ -38,9 +38,9 @@ model tbb_personas {
   P_Apellido          String               @db.VarChar(30)
   S_Apellido          String               @db.VarChar(30)
   Nacimiento          DateTime             @db.Date
-  Genero              tbb_personas_Genero?
-  Estatus             Boolean?
-  Fecha_Registro      DateTime?            @db.DateTime(0)
+  Genero              tbb_personas_Genero? @default(N_A)
+  Estatus             Boolean?             @default(true)
+  Fecha_Registro      DateTime?            @default(now()) @db.DateTime(0)
   Fecha_Actualizacion DateTime?            @db.DateTime(0)
   tbb_artistas        tbb_artistas?
   tbb_usuarios        tbb_usuarios?
@@ -72,9 +72,9 @@ model tbb_usuarios {
   Nombre_Usuario      String?      @db.VarChar(30)
   Correo              String?      @db.VarChar(100)
   Contrase_a          String?      @map("Contraseña") @db.VarChar(50)
-  Rol_ID              Int?         @db.UnsignedInt
-  Estatus             Boolean?
-  Fecha_Registro      DateTime?    @db.DateTime(0)
+  Rol_ID              Int?         @default(1) @db.UnsignedInt
+  Estatus             Boolean?     @default(true)
+  Fecha_Registro      DateTime?    @default(now()) @db.DateTime(0)
   Fecha_Actualizacion DateTime?    @db.DateTime(0)
   tbb_compra          tbb_compra[]
   tbb_personas        tbb_personas @relation(fields: [Persona_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_usuarios_ibfk_1")
@@ -87,8 +87,8 @@ model tbc_genero {
   ID                  Int            @id @default(autoincrement()) @db.UnsignedInt
   Nombre_Genero       String?        @db.VarChar(30)
   Genero_Padre        Int?           @db.UnsignedInt
-  Estatus             Boolean?
-  Fecha_Registro      DateTime?      @db.DateTime(0)
+  Estatus             Boolean?       @default(true)
+  Fecha_Registro      DateTime?      @default(now()) @db.DateTime(0)
   Fecha_Actualizacion DateTime?      @db.DateTime(0)
   tbb_pinturas        tbb_pinturas[]
   tbc_genero          tbc_genero?    @relation("tbc_generoTotbc_genero", fields: [Genero_Padre], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbc_genero_ibfk_1")
@@ -101,8 +101,8 @@ model tbc_roles {
   ID                  Int            @id @default(autoincrement()) @db.UnsignedInt
   Nombre              String?        @db.VarChar(30)
   Descripcion         String?        @db.Text
-  Estatus             Boolean?
-  Fecha_Registro      DateTime?      @db.DateTime(0)
+  Estatus             Boolean?       @default(true)
+  Fecha_Registro      DateTime?      @default(now()) @db.DateTime(0)
   Fecha_Actualizacion DateTime?      @db.DateTime(0)
   tbb_usuarios        tbb_usuarios[]
 }
