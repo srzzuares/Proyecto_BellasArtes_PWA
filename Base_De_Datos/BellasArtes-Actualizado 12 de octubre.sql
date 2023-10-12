@@ -28,8 +28,8 @@ CREATE TABLE `tbb_artistas` (
   `Persona_ID` int unsigned NOT NULL AUTO_INCREMENT,
   `Descripcion_Blog` text,
   `Imagen` blob,
-  `Estatus` tinyint(1) DEFAULT NULL,
-  `Fecha_Registro` datetime DEFAULT NULL,
+  `Estatus` tinyint(1) DEFAULT '1',
+  `Fecha_Registro` datetime DEFAULT CURRENT_TIMESTAMP,
   `Fecha_Actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`Persona_ID`),
   CONSTRAINT `tbb_artistas_ibfk_1` FOREIGN KEY (`Persona_ID`) REFERENCES `tbb_personas` (`ID`)
@@ -89,13 +89,13 @@ CREATE TABLE `tbb_personas` (
   `P_Apellido` varchar(30) NOT NULL,
   `S_Apellido` varchar(30) NOT NULL,
   `Nacimiento` date NOT NULL,
-  `Genero` enum('M','F','N/A') DEFAULT NULL,
-  `Estatus` tinyint(1) DEFAULT NULL,
-  `Fecha_Registro` datetime DEFAULT NULL,
+  `Genero` enum('M','F','N/A') DEFAULT 'N/A',
+  `Estatus` tinyint(1) DEFAULT '1',
+  `Fecha_Registro` datetime DEFAULT CURRENT_TIMESTAMP,
   `Fecha_Actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,9 +156,9 @@ CREATE TABLE `tbb_usuarios` (
   `Nombre_Usuario` varchar(30) DEFAULT NULL,
   `Correo` varchar(100) DEFAULT NULL,
   `Contraseña` varchar(50) DEFAULT NULL,
-  `Rol_ID` int unsigned DEFAULT NULL,
-  `Estatus` tinyint(1) DEFAULT NULL,
-  `Fecha_Registro` datetime DEFAULT NULL,
+  `Rol_ID` int unsigned DEFAULT '1',
+  `Estatus` tinyint(1) DEFAULT '1',
+  `Fecha_Registro` datetime DEFAULT CURRENT_TIMESTAMP,
   `Fecha_Actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`Persona_ID`),
   KEY `Rol_ID` (`Rol_ID`),
@@ -187,8 +187,8 @@ CREATE TABLE `tbc_genero` (
   `ID` int unsigned NOT NULL AUTO_INCREMENT,
   `Nombre_Genero` varchar(30) DEFAULT NULL,
   `Genero_Padre` int unsigned DEFAULT NULL,
-  `Estatus` tinyint(1) DEFAULT NULL,
-  `Fecha_Registro` datetime DEFAULT NULL,
+  `Estatus` tinyint(1) DEFAULT '1',
+  `Fecha_Registro` datetime DEFAULT CURRENT_TIMESTAMP,
   `Fecha_Actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `Genero_Padre` (`Genero_Padre`),
@@ -216,8 +216,8 @@ CREATE TABLE `tbc_roles` (
   `ID` int unsigned NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(30) DEFAULT NULL,
   `Descripcion` text,
-  `Estatus` tinyint(1) DEFAULT NULL,
-  `Fecha_Registro` datetime DEFAULT NULL,
+  `Estatus` tinyint(1) DEFAULT '1',
+  `Fecha_Registro` datetime DEFAULT CURRENT_TIMESTAMP,
   `Fecha_Actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

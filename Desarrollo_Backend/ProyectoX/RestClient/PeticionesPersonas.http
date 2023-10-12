@@ -9,7 +9,7 @@ POST http://localhost:5999/person/create HTTP/1.1
 content-type: application/json
 
 {
-    "ID": 7,
+    "ID": 1,
     "Nombre": "",
     "P_Apellido": "333",
     "S_Apellido": "Cuev2",
