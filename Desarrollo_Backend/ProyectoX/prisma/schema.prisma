@@ -56,8 +56,8 @@ model tbb_pinturas {
   Tecnica             String?       @db.VarChar(20)
   Genero_ID           Int?          @db.UnsignedInt
   Costo               Float?        @db.Float
-  Estatus             Boolean?
-  Fecha_Registro      DateTime?     @db.DateTime(0)
+  Estatus             Boolean       @default(true)
+  Fecha_Registro      DateTime      @default(now()) @db.DateTime(0)
   Fecha_Actualizacion DateTime?     @db.DateTime(0)
   tbb_compra          tbb_compra[]
   tbb_artistas        tbb_artistas? @relation(fields: [Artista_ID], references: [Persona_ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_pinturas_ibfk_1")
