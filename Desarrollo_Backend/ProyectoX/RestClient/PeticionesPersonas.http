@@ -9,10 +9,10 @@ POST http://localhost:5999/person/create HTTP/1.1
 content-type: application/json
 
 {
-    "ID": 2,
-    "Nombre": "Crys",
-    "P_Apellido": "Suar",
-    "S_Apellido": "Cuev",
+    "ID": 7,
+    "Nombre": "",
+    "P_Apellido": "333",
+    "S_Apellido": "Cuev2",
     "Nacimiento": "2001-03-20T00:00:00.000Z",
     "Genero": "M"
 }

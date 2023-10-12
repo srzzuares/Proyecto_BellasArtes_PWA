@@ -8,99 +8,103 @@ datasource db {
 }
 
 model tbb_artistas {
-  Persona_ID          Int            @id @unique(map: "Persona_ID_UNIQUE") @default(autoincrement()) @db.UnsignedInt
-  Descripcion_Blog    String         @db.Text
-  Imagen              Bytes          @db.Blob
-  Estatus             Boolean        @default(true)
-  Fecha_Registro      DateTime       @default(now()) @db.DateTime(0)
+  Persona_ID          Int            @id @default(autoincrement()) @db.UnsignedInt
+  Descripcion_Blog    String?        @db.Text
+  Imagen              Bytes?         @db.Blob
+  Estatus             Boolean?
+  Fecha_Registro      DateTime?      @db.DateTime(0)
   Fecha_Actualizacion DateTime?      @db.DateTime(0)
   tbb_personas        tbb_personas   @relation(fields: [Persona_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_artistas_ibfk_1")
   tbb_pinturas        tbb_pinturas[]
 }
 
 model tbb_compra {
-  ID           Int          @id @unique(map: "ID_UNIQUE") @default(autoincrement()) @db.UnsignedInt
-  Usuario_ID   Int          @db.UnsignedInt
-  Pintura_ID   Int          @db.UnsignedInt
-  Costo_Final  Float        @db.Float
-  Descuento    Float?       @db.Float
-  Fecha_Venta  DateTime     @db.DateTime(0)
-  tbb_pinturas tbb_pinturas @relation(fields: [Pintura_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_compra_ibfk_1")
-  tbb_usuarios tbb_usuarios @relation(fields: [Usuario_ID], references: [Persona_ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_compra_ibfk_2")
+  ID           Int           @id @default(autoincrement()) @db.UnsignedInt
+  Usuario_ID   Int?          @db.UnsignedInt
+  Pintura_ID   Int?          @db.UnsignedInt
+  Costo_Final  Float?        @db.Float
+  Descuento    Float?        @db.Float
+  Fecha_Venta  DateTime?     @db.DateTime(0)
+  tbb_pinturas tbb_pinturas? @relation(fields: [Pintura_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_compra_ibfk_1")
+  tbb_usuarios tbb_usuarios? @relation(fields: [Usuario_ID], references: [Persona_ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_compra_ibfk_2")
 
-  @@index([Pintura_ID], map: "tbb_compra_ibfk_1")
-  @@index([Usuario_ID], map: "tbb_compra_ibfk_2")
+  @@index([Pintura_ID], map: "Pintura_ID")
+  @@index([Usuario_ID], map: "Usuario_ID")
 }
 
 model tbb_personas {
-  ID                  Int                 @id @unique(map: "ID") @default(autoincrement()) @db.UnsignedInt
-  Nombre              String              @db.VarChar(30)
-  P_Apellido          String              @db.VarChar(30)
-  S_Apellido          String              @db.VarChar(30)
-  Nacimiento          DateTime            @db.Date
-  Genero              tbb_personas_Genero
-  Estatus             Boolean             @default(true)
-  Fecha_Registro      DateTime            @default(now()) @db.DateTime(0)
-  Fecha_Actualizacion DateTime?           @db.DateTime(0)
+  ID                  Int                  @id @unique(map: "ID") @default(autoincrement()) @db.UnsignedInt
+  Nombre              String               @db.VarChar(30)
+  P_Apellido          String               @db.VarChar(30)
+  S_Apellido          String               @db.VarChar(30)
+  Nacimiento          DateTime             @db.Date
+  Genero              tbb_personas_Genero?
+  Estatus             Boolean?
+  Fecha_Registro      DateTime?            @db.DateTime(0)
+  Fecha_Actualizacion DateTime?            @db.DateTime(0)
   tbb_artistas        tbb_artistas?
   tbb_usuarios        tbb_usuarios?
 }
 
 model tbb_pinturas {
-  ID                  Int          @id @unique(map: "ID_UNIQUE") @default(autoincrement()) @db.UnsignedInt
-  Nombre_Obra         String       @db.VarChar(50)
-  Imagen              Bytes        @db.Blob
-  Descripcion         String       @db.Text
-  Artista_ID          Int          @db.UnsignedInt
-  Fecha_Creacion      DateTime     @db.Date
-  Tecnica             String       @db.VarChar(20)
-  Genero_ID           Int          @db.UnsignedInt
-  Costo               Float        @db.Float
-  Estatus             Boolean      @default(true)
-  Fecha_Registro      DateTime     @default(now()) @db.DateTime(0)
-  Fecha_Actualizacion DateTime?    @db.DateTime(0)
+  ID                  Int           @id @default(autoincrement()) @db.UnsignedInt
+  Nombre_Obra         String?       @db.VarChar(50)
+  Imagen              Bytes?        @db.Blob
+  Descripcion         String?       @db.Text
+  Artista_ID          Int?          @db.UnsignedInt
+  Fecha_Creacion      DateTime?     @db.Date
+  Tecnica             String?       @db.VarChar(20)
+  Genero_ID           Int?          @db.UnsignedInt
+  Costo               Float?        @db.Float
+  Estatus             Boolean?
+  Fecha_Registro      DateTime?     @db.DateTime(0)
+  Fecha_Actualizacion DateTime?     @db.DateTime(0)
   tbb_compra          tbb_compra[]
-  tbb_artistas        tbb_artistas @relation(fields: [Artista_ID], references: [Persona_ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_pinturas_ibfk_1")
-  tbc_genero          tbc_genero   @relation(fields: [Genero_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_pinturas_ibfk_2")
+  tbb_artistas        tbb_artistas? @relation(fields: [Artista_ID], references: [Persona_ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_pinturas_ibfk_1")
+  tbc_genero          tbc_genero?   @relation(fields: [Genero_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_pinturas_ibfk_2")
 
-  @@index([Artista_ID], map: "tbb_pinturas_ibfk_1")
-  @@index([Genero_ID], map: "tbb_pinturas_ibfk_2")
+  @@index([Artista_ID], map: "Artista_ID")
+  @@index([Genero_ID], map: "Genero_ID")
 }
 
 model tbb_usuarios {
-  Persona_ID          Int          @id @unique(map: "Persona_ID_UNIQUE") @default(autoincrement()) @db.UnsignedInt
-  Nombre_Usuario      String       @db.VarChar(30)
-  Correo              String       @db.VarChar(100)
-  Contrase_a          String       @map("Contraseña") @db.VarChar(50)
-  Rol_ID              Int          @db.UnsignedInt
-  Estatus             Boolean      @default(true)
-  Fecha_Registro      DateTime     @default(now()) @db.DateTime(0)
+  Persona_ID          Int          @id @default(autoincrement()) @db.UnsignedInt
+  Nombre_Usuario      String?      @db.VarChar(30)
+  Correo              String?      @db.VarChar(100)
+  Contrase_a          String?      @map("Contraseña") @db.VarChar(50)
+  Rol_ID              Int?         @db.UnsignedInt
+  Estatus             Boolean?
+  Fecha_Registro      DateTime?    @db.DateTime(0)
   Fecha_Actualizacion DateTime?    @db.DateTime(0)
   tbb_compra          tbb_compra[]
   tbb_personas        tbb_personas @relation(fields: [Persona_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_usuarios_ibfk_1")
+  tbc_roles           tbc_roles?   @relation(fields: [Rol_ID], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbb_usuarios_ibfk_2")
+
+  @@index([Rol_ID], map: "Rol_ID")
 }
 
 model tbc_genero {
   ID                  Int            @id @default(autoincrement()) @db.UnsignedInt
-  Nombre_Genero       String         @db.VarChar(30)
-  Genero_Padre        Int            @db.UnsignedInt
-  Estatus             Boolean        @default(true)
-  Fecha_Registro      DateTime       @default(now()) @db.DateTime(0)
+  Nombre_Genero       String?        @db.VarChar(30)
+  Genero_Padre        Int?           @db.UnsignedInt
+  Estatus             Boolean?
+  Fecha_Registro      DateTime?      @db.DateTime(0)
   Fecha_Actualizacion DateTime?      @db.DateTime(0)
   tbb_pinturas        tbb_pinturas[]
-  tbc_genero          tbc_genero     @relation("tbc_generoTotbc_genero", fields: [Genero_Padre], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbc_genero_ibfk_1")
+  tbc_genero          tbc_genero?    @relation("tbc_generoTotbc_genero", fields: [Genero_Padre], references: [ID], onDelete: NoAction, onUpdate: NoAction, map: "tbc_genero_ibfk_1")
   other_tbc_genero    tbc_genero[]   @relation("tbc_generoTotbc_genero")
 
-  @@index([Genero_Padre], map: "tbc_genero_ibfk_1")
+  @@index([Genero_Padre], map: "Genero_Padre")
 }
 
 model tbc_roles {
-  ID                  Int       @id @default(autoincrement()) @db.UnsignedInt
-  Nombre              String    @db.VarChar(30)
-  Descripcion         String    @db.Text
-  Estatus             Boolean   @default(true)
-  Fecha_Registro      DateTime  @default(now()) @db.DateTime(0)
-  Fecha_Actualizacion DateTime? @db.DateTime(0)
+  ID                  Int            @id @default(autoincrement()) @db.UnsignedInt
+  Nombre              String?        @db.VarChar(30)
+  Descripcion         String?        @db.Text
+  Estatus             Boolean?
+  Fecha_Registro      DateTime?      @db.DateTime(0)
+  Fecha_Actualizacion DateTime?      @db.DateTime(0)
+  tbb_usuarios        tbb_usuarios[]
 }
 
 enum tbb_personas_Genero {
