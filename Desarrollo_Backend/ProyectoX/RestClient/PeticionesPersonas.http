@@ -2,7 +2,7 @@ GET http://localhost:5999/person/ HTTP/1.1
 
 ###
 
-GET http://localhost:5999/person/2 HTTP/1.1
+GET http://localhost:5999/person/1 HTTP/1.1
 
 ###
 POST http://localhost:5999/person/create HTTP/1.1
@@ -10,8 +10,8 @@ content-type: application/json
 
 {
     "ID": 1,
-    "Nombre": "",
-    "P_Apellido": "333",
+    "Nombre": "Crys",
+    "P_Apellido": "Suar",
     "S_Apellido": "Cuev2",
     "Nacimiento": "2001-03-20T00:00:00.000Z",
     "Genero": "M"
@@ -25,7 +25,7 @@ content-type: application/json
     "Nombre": "Cristalino",
     "P_Apellido": "Suarez",
     "S_Apellido": "Suarez",
-    "Nacimiento": "2000-03-20T00:00:00.000Z",
+    "Nacimiento": "2001-03-20T00:00:00.000Z",
     "Genero": "M",
     "Estatus": true
 }

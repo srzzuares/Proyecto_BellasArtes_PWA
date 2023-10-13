@@ -1,0 +1,29 @@
+GET http://localhost:5999/genero/ HTTP/1.1
+
+###
+
+GET http://localhost:5999/genero/1 HTTP/1.1
+
+###
+POST http://localhost:5999/genero/create HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 1,
+    "Nombre_Genero": "Accion",
+    "Genero_Padre": 0,
+}
+
+###
+POST http://localhost:5999/genero/put/1 HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 1,
+    "Nombre_Genero": "Accion",
+    "Genero_Padre": 0,
+    "Estatus": true
+}
+
+###
+GET http://localhost:5999/genero/del/1 HTTP/1.1

@@ -1,0 +1,29 @@
+GET http://localhost:5999/roles/ HTTP/1.1
+
+###
+
+GET http://localhost:5999/roles/1 HTTP/1.1
+
+###
+POST http://localhost:5999/roles/create HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 1,
+    "Nombre": "Accion",
+    "Descripcion": 0,
+}
+
+###
+POST http://localhost:5999/roles/put/1 HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 1,
+    "Nombre_roles": "Accion",
+    "Descripcion": 0,
+    "Estatus": true
+}
+
+###
+GET http://localhost:5999/roles/del/1 HTTP/1.1
