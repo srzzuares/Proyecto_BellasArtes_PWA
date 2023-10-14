@@ -155,7 +155,7 @@ CREATE TABLE `tbb_usuarios` (
   `Persona_ID` int unsigned NOT NULL AUTO_INCREMENT,
   `Nombre_Usuario` varchar(30) DEFAULT NULL,
   `Correo` varchar(100) DEFAULT NULL,
-  `Contraseña` varchar(50) DEFAULT NULL,
+  `Contrasena` varchar(50) DEFAULT NULL,
   `Rol_ID` int unsigned DEFAULT '1',
   `Estatus` tinyint(1) DEFAULT '1',
   `Fecha_Registro` datetime DEFAULT CURRENT_TIMESTAMP,
