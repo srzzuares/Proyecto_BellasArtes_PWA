@@ -71,7 +71,7 @@ model tbb_usuarios {
   Persona_ID          Int          @id @default(autoincrement()) @db.UnsignedInt
   Nombre_Usuario      String?      @db.VarChar(30)
   Correo              String?      @db.VarChar(100)
-  Contrase_a          String?      @map("Contraseña") @db.VarChar(50)
+  Contrasena          String?      @db.VarChar(50)
   Rol_ID              Int?         @default(1) @db.UnsignedInt
   Estatus             Boolean?     @default(true)
   Fecha_Registro      DateTime?    @default(now()) @db.DateTime(0)

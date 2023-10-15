@@ -32,6 +32,10 @@ APP.use(cors());
 APP.use(express.json());
 APP.use(express.urlencoded({extended:false}));
 APP.use(require('../routes/personasRoutes.js'));
+APP.use(require('../routes/generoRoutes.js'));
+APP.use(require('../routes/rolesRoutes.js'));
+APP.use(require('../routes/usuariosRoutes.js'));
+APP.use(require('../routes/artistasRoutes.js'));
 
 // Settings
 APP.set('PORT', process.env.PORT || 5555);

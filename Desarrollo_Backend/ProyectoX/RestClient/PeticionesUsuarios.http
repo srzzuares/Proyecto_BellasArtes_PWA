@@ -1,0 +1,33 @@
+GET http://localhost:5999/usuarios/ HTTP/1.1
+
+###
+
+GET http://localhost:5999/usuarios/1 HTTP/1.1
+
+###
+POST http://localhost:5999/usuarios/create HTTP/1.1
+content-type: application/json
+
+{
+    "Persona_ID": 1,
+    "Nombre_Usuario": "Accion",
+    "Correo": "",
+    "Contrasena": "",
+    "Rol_ID": 1
+}
+
+###
+POST http://localhost:5999/usuarios/put/1 HTTP/1.1
+content-type: application/json
+
+{
+    "Persona_ID": 1,
+    "Nombre_Usuario": "Accion",
+    "Correo": "",
+    "Contrasena": "",
+    "Rol_ID": 1,
+    "Estatus": true
+}
+
+###
+GET http://localhost:5999/usuarios/del/1 HTTP/1.1
