@@ -1,0 +1,41 @@
+GET http://localhost:5999/pinturas/ HTTP/1.1
+
+###
+
+GET http://localhost:5999/pinturas/1 HTTP/1.1
+
+###
+POST http://localhost:5999/pinturas/create HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 1,
+    "Nombre_Obra": "Accion", 
+    "Imagen": "Accion",
+    "Descripcion": "Accion",
+    "pinturas_ID": 1,
+    "Fecha_Creacion": "2023-10-16T00:20:18.205Z",
+    "Tecnica": "Accion",
+    "Genero_ID": 1,
+    "Costo": 12.2
+}
+
+###
+POST http://localhost:5999/pinturas/put/1 HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 1,
+    "Nombre_Obra": "Accion", 
+    "Imagen": "Accion",
+    "Descripcion": "Accion",
+    "pinturas_ID": 1,
+    "Fecha_Creacion": "2023-10-16T00:20:18.205Z",
+    "Tecnica": "Accion",
+    "Genero_ID": 1,
+    "Costo": 12.2,
+    "Estatus": true
+}
+
+###
+GET http://localhost:5999/pinturas/del/1 HTTP/1.1

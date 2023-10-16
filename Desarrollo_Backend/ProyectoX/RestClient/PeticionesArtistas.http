@@ -9,9 +9,9 @@ POST http://localhost:5999/artista/create HTTP/1.1
 content-type: application/json
 
 {
-    "ID": 1,
-    "Nombre_artista": "Accion",
-    "artista_Padre": 0,
+    "Persona_ID": 1,
+    "Descripcion_Blog": "Accion",
+    "Imagen": "",
 }
 
 ###
@@ -19,12 +19,11 @@ POST http://localhost:5999/artista/put/1 HTTP/1.1
 content-type: application/json
 
 {
-    "ID": 1,
-    "Nombre_artista": "Accion",
-    "artista_Padre": 0,
+    "Persona_ID": 1,
+    "Descripcion_Blog": "Accion",
+    "Imagen": "",
     "Estatus": true
 }
 
 ###
 GET http://localhost:5999/artista/del/1 HTTP/1.1
- 

@@ -36,6 +36,7 @@ APP.use(require('../routes/generoRoutes.js'));
 APP.use(require('../routes/rolesRoutes.js'));
 APP.use(require('../routes/usuariosRoutes.js'));
 APP.use(require('../routes/artistasRoutes.js'));
+APP.use(require('../routes/pinturasRoutes.js'));
 
 // Settings
 APP.set('PORT', process.env.PORT || 5555);
