@@ -1,0 +1,33 @@
+GET http://localhost:5999/compras/ HTTP/1.1
+
+###
+
+GET http://localhost:5999/compras/1 HTTP/1.1
+
+###
+POST http://localhost:5999/compras/create HTTP/1.1
+content-type: application/json
+
+{
+    "ID": 1,
+    "Usuario_ID": 1,
+    "Pintura_ID": 1,
+    "Costo_Final": 12.2,
+    "Descuento": 12.3,
+    "Fecha_Venta": "2023-10-16T00:20:18.205Z",
+}
+
+###
+POST http://localhost:5999/compras/put/1 HTTP/1.1
+content-type: application/json
+
+{
+    "Usuario_ID": 1,
+    "Pintura_ID": 1,
+    "Costo_Final": 12.2,
+    "Descuento": 12.3,
+    "Fecha_Venta": "2023-10-16T00:20:18.205Z",
+}
+
+###
+GET http://localhost:5999/compras/del/1 HTTP/1.1
