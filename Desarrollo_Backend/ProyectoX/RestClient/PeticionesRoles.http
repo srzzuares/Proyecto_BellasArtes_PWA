@@ -10,8 +10,8 @@ content-type: application/json
 
 {
     "ID": 1,
-    "Nombre": "Accion",
-    "Descripcion": 0,
+    "Nombre": "Administrador",
+    "Descripcion": "Rol que tiene acceso a toda la plataforma web"
 }
 
 ###
@@ -19,9 +19,8 @@ POST http://localhost:5999/roles/put/1 HTTP/1.1
 content-type: application/json
 
 {
-    "ID": 1,
-    "Nombre_roles": "Accion",
-    "Descripcion": 0,
+    "Nombre": "Desarrollador",
+    "Descripcion": "Rol que tiene acceso a toda la plataforma web para configurar o actualizar secciones",
     "Estatus": true
 }
 
