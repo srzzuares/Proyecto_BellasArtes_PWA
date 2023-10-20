@@ -45,12 +45,12 @@ Código ha utilizar durante el proyecto:
 
 ```bash
 # Esto es para dependencias del proyectox
-npm i express dotenv cors bcrypt @prisma/client express-validator
+npm i express dotenv cors @prisma/client express-validator
 ```
 
 ```bash
 # Esto es para dependenciasde desarrollo del proyectox
-npm i nodemon prisma -D
+npm i nodemon prisma bcrypt -D
 ```
 
 ```bash

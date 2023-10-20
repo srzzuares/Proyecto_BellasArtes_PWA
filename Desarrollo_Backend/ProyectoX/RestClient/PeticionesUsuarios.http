@@ -9,10 +9,10 @@ POST http://localhost:5999/usuarios/create HTTP/1.1
 content-type: application/json
 
 {
-    "Persona_ID": 1,
-    "Nombre_Usuario": "Accion",
-    "Correo": "",
-    "Contrasena": "",
+    "Persona_ID": 2,
+    "Nombre_Usuario": "Crysuar",
+    "Correo": "Crys@gmail.com",
+    "Contrasena": "12345",
     "Rol_ID": 1
 }
 

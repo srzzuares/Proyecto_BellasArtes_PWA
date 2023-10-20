@@ -10,9 +10,9 @@ content-type: application/json
 
 {
     "ID": 1,
-    "Nombre": "Crys",
-    "P_Apellido": "Suar",
-    "S_Apellido": "Cuev2",
+    "Nombre": "Uriel",
+    "P_Apellido": "Maldonado",
+    "S_Apellido": "Cortez",
     "Nacimiento": "2001-03-20T00:00:00.000Z",
     "Genero": "M"
 }

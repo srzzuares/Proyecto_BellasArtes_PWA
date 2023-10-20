@@ -95,7 +95,7 @@ CREATE TABLE `tbb_personas` (
   `Fecha_Actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,7 +155,7 @@ CREATE TABLE `tbb_usuarios` (
   `Persona_ID` int unsigned NOT NULL AUTO_INCREMENT,
   `Nombre_Usuario` varchar(30) DEFAULT NULL,
   `Correo` varchar(100) DEFAULT NULL,
-  `Contrasena` varchar(50) DEFAULT NULL,
+  `Contrasena` varchar(100) DEFAULT NULL,
   `Rol_ID` int unsigned DEFAULT '1',
   `Estatus` tinyint(1) DEFAULT '1',
   `Fecha_Registro` datetime DEFAULT CURRENT_TIMESTAMP,
