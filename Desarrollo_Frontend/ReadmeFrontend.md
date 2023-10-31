@@ -6,13 +6,17 @@
 
 Colors
 
---primary-100: | #f7cac9;
---primary-200:| #5c5c5c;
---primary-300:| #5c5c5c;
---accent-100:| #5c5c5c;
---accent-200:| #ebebeb;
---text-100:| #333333;
---text-200:| #5c5c5c;
---bg-100:| #fffff3;
---bg-200:| #f5f5e9;
---bg-300:| #ccccc0;
+| name           | colors   |
+| -------------- | -------- |
+| --primary-100: | #272343; |
+| --primary-200: | #788e98; |
+| --primary-300: | #F0F5F9; |
+| --accent-100:  | #788189; |
+| --accent-200:  | #e1e4e6; |
+| --text-100:    | #1E2022; |
+| --text-200:    | #52616B; |
+| --bg-100:      | #FFFFFF; |
+| --bg-200:      | #E3F6F5; |
+| --bg-300:      | #BAE8E8; |
+
+[Desarrollo_Frontend\frontend\src\assets\img\Colores_principales.png](Desarrollo_Frontend\frontend\src\assets\img\Colores_principales.png)
