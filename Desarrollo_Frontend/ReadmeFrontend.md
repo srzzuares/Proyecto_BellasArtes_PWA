@@ -6,6 +6,10 @@
 
 Colors
 
+[![Colores](https://github.com/srzzuares/Proyecto_BellasArtes_PWA/blob/main/Desarrollo_Frontend/frontend/src/assets/img/Colores_principales.png?raw=true)]
+
+[![Colores](https://github.com/srzzuares/Proyecto_BellasArtes_PWA/blob/main/Desarrollo_Frontend/frontend/src/assets/img/Colores_principales_Variables.png?raw=true)]
+
 | name           | colors   |
 | -------------- | -------- |
 | --primary-100: | #272343; |
@@ -18,5 +22,3 @@ Colors
 | --bg-100:      | #FFFFFF; |
 | --bg-200:      | #E3F6F5; |
 | --bg-300:      | #BAE8E8; |
-
-[Desarrollo_Frontend\frontend\src\assets\img\Colores_principales.png](Desarrollo_Frontend\frontend\src\assets\img\Colores_principales.png)
