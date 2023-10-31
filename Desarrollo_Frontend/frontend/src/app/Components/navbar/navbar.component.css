@@ -1,6 +1,9 @@
 .collapse{
     justify-content: center;
 }
+.navbar{
+    background-color: aqua;
+}
 .navbar-logo {
     float: left;
     margin-left: 20px;
