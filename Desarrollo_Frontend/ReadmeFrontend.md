@@ -6,9 +6,9 @@
 
 Colors
 
-[![Colores](https://github.com/srzzuares/Proyecto_BellasArtes_PWA/blob/main/Desarrollo_Frontend/frontend/src/assets/img/Colores_principales.png?raw=true)]
+![Colores](https://github.com/srzzuares/Proyecto_BellasArtes_PWA/blob/main/Desarrollo_Frontend/frontend/src/assets/img/Colores_principales.png?raw=true)
 
-[![Colores](https://github.com/srzzuares/Proyecto_BellasArtes_PWA/blob/main/Desarrollo_Frontend/frontend/src/assets/img/Colores_principales_Variables.png?raw=true)]
+![Colores](https://github.com/srzzuares/Proyecto_BellasArtes_PWA/blob/main/Desarrollo_Frontend/frontend/src/assets/img/Colores_principales_Variables.png?raw=true)
 
 | name           | colors   |
 | -------------- | -------- |
