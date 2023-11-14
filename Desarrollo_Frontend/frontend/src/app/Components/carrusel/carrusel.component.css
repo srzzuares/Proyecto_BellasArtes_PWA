@@ -1,0 +1,11 @@
+/* Contenedor del carrusel */
+  #carouselExampleInterval {
+    max-width: 500px; /* Establece el ancho máximo del carrusel */
+    margin: 150 ; /* Centra el carrusel en la página */
+  }
+
+  /* Imágenes dentro del carrusel */
+  .carousel-item img {
+    width: 100%; /* Hace que las imágenes ocupen todo el ancho del carrusel */
+  }
+
