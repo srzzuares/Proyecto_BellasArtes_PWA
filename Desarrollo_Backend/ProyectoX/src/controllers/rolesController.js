@@ -3,45 +3,42 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const date = new Date();
 
-Ctll.GetPerson = async (req, res) => {
-    const resultados = await prisma.tbb_personas.findMany();
+Ctll.GetRoles = async (req, res) => {
+    const resultados = await prisma.tbc_roles.findMany();
     res.status(200).json({
         success: true,
         data: resultados,
     });
 }
 
-Ctll.GetOnePerson = async (req, res) => {
+Ctll.GetOneRoles = async (req, res) => {
     const ID = Number(req.params.ID);
-    const Id_Person = await prisma.tbb_personas.findUnique({ 
+    const Id_Roles = await prisma.tbc_roles.findUnique({ 
         where: { ID },
     });
     
-    if (!Id_Person) {
+    if (!Id_Roles) {
         res.status(404).json({
             success: false,
-            message: "Persona no encontrada",
+            message: "Rol no encontrado",
         });
     }else {
         res.status(200).json({
             success: true,
-            data: Id_Person,
+            data: Id_Roles,
         });
     }
     
 }
 
-Ctll.SavePerson = async (req, res) => {
-    const { ID, Nombre, P_Apellido, S_Apellido, Nacimiento, Genero } = req.body;
-    const ifPersonThis = await prisma.tbb_personas.findUnique({ where: { ID } })
-    if(!ifPersonThis){
-        const send = await prisma.tbb_personas.create({
+Ctll.SaveRoles = async (req, res) => {
+    const { ID, Nombre, Descripcion } = req.body;
+    const ifRolesThis = await prisma.tbc_roles.findUnique({ where: { ID } })
+    if(!ifRolesThis){
+        const send = await prisma.tbc_roles.create({
             data: {
                 Nombre,
-                P_Apellido,
-                S_Apellido,
-                Nacimiento,
-                Genero
+                Descripcion
             }
         });
         res.status(200).json({
@@ -53,24 +50,21 @@ Ctll.SavePerson = async (req, res) => {
     
 }
 
-Ctll.PutPerson = async (req, res) => {
+Ctll.PutRoles = async (req, res) => {
     const [ID, Fecha_Actualizacion] = [Number(req.params.ID), date];
-    const { Nombre, P_Apellido, S_Apellido, Nacimiento, Genero, Estatus } = req.body;
-    const ifPersonThis = await prisma.tbb_personas.findUnique({ where: { ID } })
-    if(!ifPersonThis){
+    const { Nombre, Descripcion, Estatus } = req.body;
+    const ifRolesThis = await prisma.tbc_roles.findUnique({ where: { ID } })
+    if(!ifRolesThis){
         res.status(404).json({
             success: false,
-            message: "Persona no encontrada o ID Incorrecto",
+            message: "Rol no encontrado o ID Incorrecto",
         });
     }else{
-        const put = await prisma.tbb_personas.update({
+        const put = await prisma.tbc_roles.update({
             where: { ID },
             data: {
                 Nombre,
-                P_Apellido,
-                S_Apellido,
-                Nacimiento,
-                Genero,
+                Descripcion,
                 Estatus,
                 Fecha_Actualizacion
             }
@@ -83,11 +77,11 @@ Ctll.PutPerson = async (req, res) => {
     }    
 }
 
-Ctll.DelPerson = async (req, res) => {
+Ctll.DelRoles = async (req, res) => {
     const [ ID, Estatus, Fecha_Actualizacion ] = [Number(req.params.ID) , false, date]
-    const ifPersonThis = await prisma.tbb_personas.findUnique({ where: { ID } })
-    if(ifPersonThis){
-        const delEst = await prisma.tbb_personas.update({
+    const ifRolesThis = await prisma.tbc_roles.findUnique({ where: { ID } })
+    if(ifRolesThis){
+        const delEst = await prisma.tbc_roles.update({
             where: { ID },
             data: {
                 Estatus,
@@ -102,7 +96,7 @@ Ctll.DelPerson = async (req, res) => {
     }else{
         res.status(404).json({
             success: false,
-            message: "Persona no encontrada o ID Incorrecto",
+            message: "Rol no encontrada o ID Incorrecto",
         });
     }
 }
