@@ -61,7 +61,7 @@ Ctll.PutArtista = async (req, res) => {
         });
     }else{
         const put = await prisma.tbb_artistas.update({
-            where: { ID },
+            where: { Persona_ID },
             data: {
                 Descripcion_Blog,
                 Imagen,
@@ -81,18 +81,34 @@ Ctll.DelArtista = async (req, res) => {
     const [ Persona_ID, Estatus, Fecha_Actualizacion ] = [Number(req.params.ID) , false, date]
     const ifArtistaThis = await prisma.tbb_artistas.findUnique({ where: { Persona_ID } })
     if(ifArtistaThis){
-        const delEst = await prisma.tbb_artistas.update({
-            where: { ID },
-            data: {
-                Estatus,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Eliminado completado",
-            success: true,
-            data: delEst
-        });
+        if(ifArtistaThis.Estatus){
+            const delEst = await prisma.tbb_artistas.update({
+                where: { Persona_ID },
+                data: {
+                    Estatus,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Eliminado completado",
+                success: true,
+                data: delEst
+            });
+        }
+        else {
+            const delActEst = await prisma.tbb_artistas.update({
+                where: { Persona_ID },
+                data: {
+                    Estatus:true,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Activado completado",
+                success: true,
+                data: delActEst
+            });
+        }
     }else{
         res.status(404).json({
             success: false,

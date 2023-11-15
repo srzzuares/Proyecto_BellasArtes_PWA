@@ -9,9 +9,9 @@ POST http://localhost:5999/artista/create HTTP/1.1
 content-type: application/json
 
 {
-    "Persona_ID": 1,
+    "Persona_ID": 2,
     "Descripcion_Blog": "Accion",
-    "Imagen": "",
+    "Imagen": ""
 }
 
 ###

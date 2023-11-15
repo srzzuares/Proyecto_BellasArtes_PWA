@@ -3,31 +3,32 @@ const express = require('express');
 const APP = express();
 const cors = require('cors');
 const path = require('path');
-const swUI = require('swagger-ui-express');
-const swJsD = require('swagger-jsdoc');
+//Swagger
+const swaggerUI = require('swagger-ui-express')
+const swaggerJsDoc = require('swagger-jsdoc')
 require('dotenv').config();
 
-// Object Swagger
-const swSp = {
+//Object Swagger
+const swaggerSpec = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "Api de Bellas Artes",
+            title: "Api-Node JS, Prisma y Swagger",
             version: "1.0.0"
         },
         servers: [
             {
-                url : "http://localhost:5999"
+                url: "http://localhost:5999"
             }
         ]
     },
     apis: [
-        `${path.join(__dirname, '../routes/personasRoutes.js')}`
+        `${path.join(__dirname, '../routes/artistasRoutes.js')}`
     ]
 }
 
-// Middlewares
-APP.use('/api-doc', swUI.serve, swUI.setup(swJsD(swSp)));
+//Midleware
+APP.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 APP.use(cors());
 APP.use(express.json());
 APP.use(express.urlencoded({extended:false}));
