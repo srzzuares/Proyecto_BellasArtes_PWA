@@ -28,6 +28,7 @@ const swaggerSpec = {
         `${path.join(__dirname, '../routes/rolesRoutes.js')}`,
         `${path.join(__dirname, '../routes/usuariosRoutes.js')}`,
         `${path.join(__dirname, '../routes/artistasRoutes.js')}`,
+        `${path.join(__dirname, '../routes/pinturasRoutes.js')}`,
     ]
 }
 

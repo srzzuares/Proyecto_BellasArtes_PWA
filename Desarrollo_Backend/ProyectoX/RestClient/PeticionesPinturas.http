@@ -13,10 +13,10 @@ content-type: application/json
     "Nombre_Obra": "Accion", 
     "Imagen": "Accion",
     "Descripcion": "Accion",
-    "pinturas_ID": 1,
+    "Artista_ID": 1,
     "Fecha_Creacion": "2023-10-16T00:20:18.205Z",
     "Tecnica": "Accion",
-    "Genero_ID": 1,
+    "Genero_ID": 2,
     "Costo": 12.2
 }
 
@@ -29,7 +29,7 @@ content-type: application/json
     "Nombre_Obra": "Accion", 
     "Imagen": "Accion",
     "Descripcion": "Accion",
-    "pinturas_ID": 1,
+    "Artista_ID": 2,
     "Fecha_Creacion": "2023-10-16T00:20:18.205Z",
     "Tecnica": "Accion",
     "Genero_ID": 1,

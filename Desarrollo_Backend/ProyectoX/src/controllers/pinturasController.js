@@ -93,7 +93,8 @@ Ctll.DelPintura = async (req, res) => {
     const [ ID, Estatus, Fecha_Actualizacion ] = [Number(req.params.ID) , false, date]
     const ifPinturaThis = await prisma.tbb_pinturas.findUnique({ where: { ID } })
     if(ifPinturaThis){
-        const delEst = await prisma.tbb_pinturas.update({
+        if(ifPinturaThis.Estatus){
+            const delEst = await prisma.tbb_pinturas.update({
             where: { ID },
             data: {
                 Estatus,
@@ -101,10 +102,25 @@ Ctll.DelPintura = async (req, res) => {
             }
         });
         res.status(200).json({
-            menssage: "Eliminado completado",
+            menssage: "Desactivado completado",
             success: true,
             data: delEst
         });
+        }
+        else {
+            const delActEst = await prisma.tbb_pinturas.update({
+            where: { ID },
+            data: {
+                Estatus: true,
+                Fecha_Actualizacion
+            }
+        });
+        res.status(200).json({
+            menssage: "Activado completado",
+            success: true,
+            data: delActEst
+        });
+        }
     }else{
         res.status(404).json({
             success: false,
