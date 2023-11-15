@@ -111,22 +111,38 @@ Ctll.DelGenero = async (req, res) => {
     const [ ID, Estatus, Fecha_Actualizacion ] = [Number(req.params.ID) , false, date]
     const ifGeneroThis = await prisma.tbc_genero.findUnique({ where: { ID } })
     if(ifGeneroThis){
-        const delEst = await prisma.tbc_genero.update({
-            where: { ID },
-            data: {
-                Estatus,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Eliminado completado",
-            success: true,
-            data: delEst
-        });
+        if(ifGeneroThis.Estatus){
+            const delEst = await prisma.tbc_genero.update({
+                where: { ID },
+                data: {
+                    Estatus,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Desactivado completado",
+                success: true,
+                data: delEst
+            });
+        }
+        else{
+            const delActEst = await prisma.tbc_genero.update({
+                where: { ID },
+                data: {
+                    Estatus:true,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Activado completado",
+                success: true,
+                data: delActEst
+            });
+        }
     }else{
         res.status(404).json({
             success: false,
-            message: "Generoa no encontrada o ID Incorrecto",
+            message: "Genero no encontrada o ID Incorrecto",
         });
     }
 }
