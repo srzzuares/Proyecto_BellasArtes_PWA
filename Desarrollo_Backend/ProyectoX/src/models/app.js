@@ -13,7 +13,7 @@ const swaggerSpec = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "Api-Node JS, Prisma y Swagger",
+            title: "Bellas Artes Api-Node JS, Prisma y Swagger",
             version: "1.0.0"
         },
         servers: [
@@ -26,6 +26,7 @@ const swaggerSpec = {
         `${path.join(__dirname, '../routes/personasRoutes.js')}`,
         `${path.join(__dirname, '../routes/generoRoutes.js')}`,
         `${path.join(__dirname, '../routes/rolesRoutes.js')}`,
+        `${path.join(__dirname, '../routes/usuariosRoutes.js')}`,
         `${path.join(__dirname, '../routes/artistasRoutes.js')}`,
     ]
 }

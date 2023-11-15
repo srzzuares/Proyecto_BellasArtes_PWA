@@ -69,22 +69,25 @@ Ctll.PutUsuario = async (req, res) => {
             message: "Usuario no encontrado o ID Incorrecto",
         });
     }else{
-        const put = await prisma.tbb_usuarios.update({
-            where: { ID },
-            data: {
-                Nombre_Usuario,
-                Correo,
-                Contrasena,
-                Rol_ID,
-                Estatus,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Actualizacion completa",
-            success: true,
-            data: put
-        });
+        bcrypt.hash(Contrasena.toString(), salt,async (err,hash)=>{
+            if(err) {res.status(404).json({success: false, message: "Usuario no encontrado",});}
+            const put = await prisma.tbb_usuarios.update({
+                where: { Persona_ID },
+                data: {
+                    Nombre_Usuario,
+                    Correo,
+                    Contrasena: hash,
+                    Rol_ID,
+                    Estatus,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Actualizacion completa",
+                success: true,
+                data: put
+            });
+        })
     }    
 }
 
@@ -92,22 +95,37 @@ Ctll.DelUsuario = async (req, res) => {
     const [ Persona_ID, Estatus, Fecha_Actualizacion ] = [Number(req.params.ID) , false, date]
     const ifUsuarioThis = await prisma.tbb_usuarios.findUnique({ where: { Persona_ID } })
     if(ifUsuarioThis){
-        const delEst = await prisma.tbb_usuarios.update({
-            where: { ID },
-            data: {
-                Estatus,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Eliminado completado",
-            success: true,
-            data: delEst
-        });
+        if(ifUsuarioThis.Estatus){
+            const delEst = await prisma.tbb_usuarios.update({
+                where: { Persona_ID },
+                data: {
+                    Estatus,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Desactivado completado",
+                success: true,
+                data: delEst
+            });
+        }else{
+            const delEst = await prisma.tbb_usuarios.update({
+                where: { Persona_ID },
+                data: {
+                    Estatus:true,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Activado completado",
+                success: true,
+                data: delEst
+            });
+        }
     }else{
         res.status(404).json({
             success: false,
-            message: "Usuarioa no encontrada o ID Incorrecto",
+            message: "Usuario no encontrada o ID Incorrecto",
         });
     }
 }
