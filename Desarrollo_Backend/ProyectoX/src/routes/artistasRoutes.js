@@ -124,7 +124,7 @@ RooT.post('/artista/create', Ctll.SaveArtista)
  *                          $ref: '#/components/schemas/Artista'
  *      responses:
  *          200:
- *              description: Obra actualizada
+ *              description: Artista actualizado
  *              content:
  *                  application/json:
  *                      schema:
@@ -150,7 +150,7 @@ RooT.put('/artista/put/:ID', Ctll.PutArtista)
  *            description: Identificacion del artista
  *      responses:
  *          200:
- *              description: Artista Desactivado
+ *              description: Artista Desactivado/Activo
  *              content:
  *                  application/json:
  *                      schema:

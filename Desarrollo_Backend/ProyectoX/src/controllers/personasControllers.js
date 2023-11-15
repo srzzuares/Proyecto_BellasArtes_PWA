@@ -87,18 +87,34 @@ Ctll.DelPerson = async (req, res) => {
     const [ ID, Estatus, Fecha_Actualizacion ] = [Number(req.params.ID) , false, date]
     const ifPersonThis = await prisma.tbb_personas.findUnique({ where: { ID } })
     if(ifPersonThis){
-        const delEst = await prisma.tbb_personas.update({
-            where: { ID },
-            data: {
-                Estatus,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Eliminado completado",
-            success: true,
-            data: delEst
-        });
+        if(ifPersonThis.Estatus){
+            const delEst = await prisma.tbb_personas.update({
+                where: { ID },
+                data: {
+                    Estatus,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Desactivado completado",
+                success: true,
+                data: delEst
+            });
+        }
+        else {
+            const delActEst = await prisma.tbb_personas.update({
+                where: { ID },
+                data: {
+                    Estatus:true,
+                    Fecha_Actualizacion
+                }
+            });
+            res.status(200).json({
+                menssage: "Activado completado",
+                success: true,
+                data: delActEst
+            });
+        }
     }else{
         res.status(404).json({
             success: false,
