@@ -1,4 +1,6 @@
+// app.component.ts
 import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
+  showImage = true;
+
+  constructor(private router: Router) {}
+
+  isHomePage(): boolean {
+    return this.router.url === '/home';
+  }
 }
+

@@ -1,16 +1,17 @@
-
-
-  <!-- app.component.hmtl -->
+<!-- app.component.html -->
 <div class="min-h-screen flex flex-col">
   <!-- Barra de navegación fija en la parte superior -->
-  <app-carrusel></app-carrusel>
   <app-navbar class="fixed top-0 w-full"></app-navbar>
-
-  <div class="flex-1">
+  
+  <div class="flex-1" >
     <!-- Contenido de la aplicación que se expande para llenar el espacio disponible -->
     <router-outlet></router-outlet> <!-- Cargar el componente correspondiente a la ruta -->
     
+    <!-- Imagen que aparecerá solo en la página de inicio -->
   </div>
+  <ng-container *ngIf="isHomePage() && showImage">
+    <img src="https://www.arquitecturaydiseno.es/medio/2023/05/31/creacion-de-adan-en-la-capilla-sixtina-miguel-angel-buonarroti-1508-1512_5a516deb_230531142003_2000x1141.jpg" alt="Creación de Adán en la Capilla Sixtina" width="800px">
+  </ng-container>
 
   <!-- Pie de página al final de la página -->
   <app-footer></app-footer>

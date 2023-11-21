@@ -1,0 +1,43 @@
+<!-- component -->
+<div class="py-10 bg-gray-50" style="padding-top: 100px;">
+    <!-- ropa.compoenent.html-->
+    <div class="py-5 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12 xl:px-32">
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 tex
+                t-center text-2xl text-gray-900 font-bold md:text-4xl">Ropa Artesanal</h2>
+            </div>
+            <div class="grid gap-12 items-center md:grid-cols-3">
+                <div *ngFor="let artista of artistas">
+                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="artista.imagen" alt="woman"
+                        >
+                    <!-- Agrega el evento click -->
+                    <div>
+                        <h4 class="text-2xl">{{ artista.nombre }}</h4>
+                        <span class="block text-sm text-gray-500">{{ artista.descripcion }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- accesoroios.compoenent.html-->
+    <!-- joyeria.compoenent.html-->
+    <div class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12 xl:px-32">
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Accesorios Artesanal</h2>
+            </div>
+            <div class="grid gap-12 items-center md:grid-cols-3">
+                <div *ngFor="let pintura of catalogo">
+                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="pintura.imagen" alt="woman"
+                        >
+                    <!-- Agrega el evento click -->
+                    <div>
+                        <h4 class="text-2xl">{{ pintura.nombre }}</h4>
+                        <span class="block text-sm text-gray-500">{{ pintura.descripcion }}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
