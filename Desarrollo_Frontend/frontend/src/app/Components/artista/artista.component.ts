@@ -18,7 +18,7 @@ export class ArtistaComponent implements OnInit{
   
   loadJoyerias() {
     this.ArtistaService.GetArtista().subscribe((data) => {
-      this.artistas = data;
+      this.artistas = data.data;
       console.log(data)
     });
   }
