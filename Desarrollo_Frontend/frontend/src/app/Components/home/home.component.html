@@ -1,43 +1,31 @@
-<!-- component -->
-<div class="py-10 bg-gray-50" style="padding-top: 100px;">
-    <!-- ropa.compoenent.html-->
-    <div class="py-5 bg-gray-50">
-        <div class="container mx-auto px-6 md:px-12 xl:px-32">
-            <div class="mb-16 text-center">
-                <h2 class="mb-4 tex
-                t-center text-2xl text-gray-900 font-bold md:text-4xl">Ropa Artesanal</h2>
-            </div>
-            <div class="grid gap-12 items-center md:grid-cols-3">
-                <div *ngFor="let artista of artistas">
-                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="artista.imagen" alt="woman"
-                        >
-                    <!-- Agrega el evento click -->
-                    <div>
-                        <h4 class="text-2xl">{{ artista.nombre }}</h4>
-                        <span class="block text-sm text-gray-500">{{ artista.descripcion }}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- accesoroios.compoenent.html-->
-    <!-- joyeria.compoenent.html-->
-    <div class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6 md:px-12 xl:px-32">
-            <div class="mb-16 text-center">
-                <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Accesorios Artesanal</h2>
-            </div>
-            <div class="grid gap-12 items-center md:grid-cols-3">
-                <div *ngFor="let pintura of catalogo">
-                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="pintura.imagen" alt="woman"
-                        >
-                    <!-- Agrega el evento click -->
-                    <div>
-                        <h4 class="text-2xl">{{ pintura.nombre }}</h4>
-                        <span class="block text-sm text-gray-500">{{ pintura.descripcion }}</span>
-                    </div>
-                </div>
+<div class="grid min-h-screen bg-white-900 py-10">
 
+
+    <div class="grid min-h-screen place-items-center">
+        <div class="gallery border-2 rounded m-5 bg-white" style="width:750px;">
+            <div class="each-frame border-box flex-none h-full" title="Owl">
+                <!-- title shows in top -->
+                <!-- this is full editable area -->
+                <div class="main flex w-full p-8">
+                    <div class="sub w-4/6 my-auto">
+                        <img class="w-full p-70 rounded-lg"
+                            src="https://emamichiselart.files.wordpress.com/2015/09/emami-fb-1.jpg" alt="">
+                    </div>
+<div class="sub w-full my-auto">
+    <div class="head text-3xl font-bold mb-4">La casa de las bellas Artes</div>
+    <div class="long-text text-lg p-4">
+        <!-- Agregamos p-4 para el relleno -->
+        Las artes buscan representar, a través de medios diferentes el universo de inquietudes
+        humanas,
+        sean reales o imaginadas, mediante el uso de símbolos o alegorías. La expresión arte se usa
+        también
+        para referir a todos aquellos procesos manuales que requieren de la aplicación de reglas o
+        técnicas
+        específicas, orientadas al disfrute de los sentidos. Por ejemplo, las artes culinarias.
+    </div>
+</div>
+                </div>
             </div>
-        </div>
-        
+            </div>
+    </div>
+    </div>
