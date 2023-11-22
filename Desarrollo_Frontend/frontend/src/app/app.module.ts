@@ -12,6 +12,7 @@ import { AboutComponent } from './Components/about/about.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import { CatalogoComponent } from './Components/catalogo/catalogo.component';
 import { ArtistaComponent } from './Components/artista/artista.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ArtistaComponent } from './Components/artista/artista.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

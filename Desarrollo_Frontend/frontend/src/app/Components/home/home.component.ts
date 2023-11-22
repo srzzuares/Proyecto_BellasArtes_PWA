@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   loadArtista() {
     this.artista.GetArtista().subscribe((data) => {
-      this.artistas = data.slice(0, 3); 
+      this.artistas = data; 
     });}
     
   // loadpintura() {
