@@ -15,7 +15,7 @@ export class ArtistaComponent implements OnInit{
   ngOnInit(): void {
     this.loadJoyerias();
   }
-  
+
   loadJoyerias() {
     this.ArtistaService.GetArtista().subscribe((data) => {
       this.artistas = data.data;

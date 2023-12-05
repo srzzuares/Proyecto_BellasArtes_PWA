@@ -1,23 +1,18 @@
-<div class="cardartista" *ngFor="let item of artistas">
-  <a href="#!">
-    <img
-      class="imgartista"
-      src="https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg"
-      alt="" />
-  </a>
-  <div class="p-6">
-  <h5
-      class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-      {{item.Descripcion_Blog}}
-    </h5>
-    <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-      </p>
-    <button
-      type="button"
-      class="buttonartista"
-      data-te-ripple-init
-      data-te-ripple-color="light">
-      Button
-    </button>
+<!-- joyeria.compoenent.html-->
+<div class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6 md:px-12 xl:px-32">
+      <div class="mb-16 text-center">
+          <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Artistas</h2>
+      </div>
+      <div class="grid gap-12 items-center md:grid-cols-3">
+          <div *ngFor="let item of artistas">
+              <img class="w-64 h-64 mx-auto object-cover rounded-xl" alt="woman" loading="lazy"
+                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO9vJ557N-T0KBrEu2bAJzoeKeVX_XOV3qa0KMBcPnmQ&s" > <!-- Agrega el evento click -->
+              <div>
+                  <span class="block text-sm text-gray-500">{{ item.Descripcion_Blog }}</span>
+              </div>
+          </div>
+
+      </div>
   </div>
-</div>
+
