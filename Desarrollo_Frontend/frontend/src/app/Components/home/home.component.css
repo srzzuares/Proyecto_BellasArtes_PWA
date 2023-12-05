@@ -1,13 +1,32 @@
-css 
-#divprincipal{
-    margin-top: 300px;
+@font-face {
+    font-family: 'Mifuente';
+    src: url('../../../assets/Ephesis/Ephesis-Regular.ttf'); /* Ajusta la ruta según tu estructura de carpetas */
 }
+
+#divprincipal {
+    margin-top: 100px;
+}
+
 /* estilos.css */
 #vaalado {
     font-size: 50px;
     margin-top: 100px;
-    max-width: 70%; /* Ajusta el valor según tus necesidades */
-    margin-left: 550px;
-    margin-right: auto;
+    max-width: 50%;
+    margin-left: 1070px;
+    margin-right: 50px;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.507);
+    padding: 70px;
+    color: white;
+    font-family: 'Mifuente';
+    margin-bottom: 20px;
+}
+#vaalado img {
+    margin-bottom: 20px; /* Ajusta la cantidad de espacio entre la imagen y el contenido siguiente */
+}
+.image-left {
+    float: left;
+    margin-right: 20px;
+    margin-top: auto;
+    margin-left: 20px;
 }
