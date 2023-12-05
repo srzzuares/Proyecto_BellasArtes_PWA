@@ -2,3 +2,12 @@ css
 #divprincipal{
     margin-top: 300px;
 }
+/* estilos.css */
+#vaalado {
+    font-size: 50px;
+    margin-top: 100px;
+    max-width: 70%; /* Ajusta el valor según tus necesidades */
+    margin-left: 550px;
+    margin-right: auto;
+    text-align: center;
+}
