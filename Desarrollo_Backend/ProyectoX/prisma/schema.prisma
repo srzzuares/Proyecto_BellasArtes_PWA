@@ -10,7 +10,7 @@ datasource db {
 model tbb_artistas {
   Persona_ID          Int            @id @default(autoincrement()) @db.UnsignedInt
   Descripcion_Blog    String?        @db.Text
-  Imagen              Bytes?         @db.Blob
+  Imagen              String?        @db.Text
   Estatus             Boolean?       @default(true)
   Fecha_Registro      DateTime?      @default(now()) @db.DateTime(0)
   Fecha_Actualizacion DateTime?      @db.DateTime(0)
@@ -49,7 +49,7 @@ model tbb_personas {
 model tbb_pinturas {
   ID                  Int           @id @default(autoincrement()) @db.UnsignedInt
   Nombre_Obra         String?       @db.VarChar(50)
-  Imagen              Bytes?        @db.Blob
+  Imagen              String?        @db.Text
   Descripcion         String?       @db.Text
   Artista_ID          Int?          @db.UnsignedInt
   Fecha_Creacion      DateTime?     @db.Date
