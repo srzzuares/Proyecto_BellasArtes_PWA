@@ -1,32 +1,52 @@
 @font-face {
     font-family: 'Mifuente';
-    src: url('../../../assets/Ephesis/Ephesis-Regular.ttf'); /* Ajusta la ruta según tu estructura de carpetas */
+    src: url('../../../assets/Ephesis/Ephesis-Regular.ttf');
 }
 
 #divprincipal {
-    margin-top: 100px;
+    margin-top: 5%;
 }
 
-/* estilos.css */
 #vaalado {
-    font-size: 50px;
-    margin-top: 100px;
-    max-width: 50%;
-    margin-left: 1070px;
-    margin-right: 50px;
+    font-size: 3vw;
+    max-width: 40%;
+    margin: 5% auto;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.507);
-    padding: 70px;
+    padding: 2vw;
     color: white;
     font-family: 'Mifuente';
-    margin-bottom: 20px;
+    position: relative;
 }
+
 #vaalado img {
-    margin-bottom: 20px; /* Ajusta la cantidad de espacio entre la imagen y el contenido siguiente */
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
+
 .image-left {
-    float: left;
-    margin-right: 20px;
-    margin-top: auto;
-    margin-left: 20px;
+    float: none;
+    margin: 0 auto 20px;
+    display: block;
+    z-index: 1;
 }
+
+@media screen and (min-width: 768px) {
+    /* Estilos para pantallas más grandes */
+    #vaalado {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .image-left {
+        float: left;
+        margin: 0 20px 0 20px; /* Ajusta el margen izquierdo aquí */
+    }
+}
+
+
+

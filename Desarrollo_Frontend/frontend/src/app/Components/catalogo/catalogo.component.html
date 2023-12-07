@@ -2,13 +2,13 @@
 <div class="py-20 bg-gray-50">
   <div class="container mx-auto px-6 md:px-12 xl:px-32">
       <div class="mb-16 text-center">
-          <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Catalogo</h2>
+          <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Catálogo</h2>
       </div>
       <div class="grid gap-12 items-center md:grid-cols-3">
           <div *ngFor="let item of catalogo">
               <img class="w-64 h-64 mx-auto object-cover rounded-xl" alt="woman" loading="lazy"
               [src]="item.Imagen"> <!-- Agrega el evento click -->
-              <div>
+              <div class="abc">
                   <h4 class="text-2xl">{{ item.Nombre_Obra }}</h4>
                   <span class="block text-sm text-gray-500">{{ item.Descripcion }}</span>
               </div>
