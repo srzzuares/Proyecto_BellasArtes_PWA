@@ -9,6 +9,9 @@ import { RouterModule } from '@angular/router';
 export class NavbarComponent {
   // Agrega una propiedad para controlar el estado del menú
   isMenuOpen = false;
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
 
   // Define la función para alternar el estado del menú
   toggleMenu() {
