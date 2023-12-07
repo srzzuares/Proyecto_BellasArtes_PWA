@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class artistaService { // Cambia el nombre de la clase a 
-  private apiUrl = 'http://localhost:5999/artista/'; // Cambia la URL de la API
+  private apiUrl = 'https://backend-bellasartes.onrender.com/artista/'; // Cambia la URL de la API
 
   constructor(private http: HttpClient) {}
 

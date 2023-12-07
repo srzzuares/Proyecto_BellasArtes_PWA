@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CatalogoService {
 
-  private apiUrl = 'http://localhost:5999/pinturas/'; 
+  private apiUrl = 'https://backend-bellasartes.onrender.com/pinturas/'; 
 
   constructor(private http: HttpClient) {}
 
