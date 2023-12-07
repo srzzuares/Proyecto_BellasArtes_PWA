@@ -7,7 +7,7 @@
       <div class="grid gap-12 items-center md:grid-cols-3">
           <div *ngFor="let item of catalogo">
               <img class="w-64 h-64 mx-auto object-cover rounded-xl" alt="woman" loading="lazy"
-                 src="https://saisho-prod-1.fra1.cdn.digitaloceanspaces.com/art/uploads/2020/01/20180322_130803-min-1.jpg" > <!-- Agrega el evento click -->
+              [src]="item.Imagen"> <!-- Agrega el evento click -->
               <div>
                   <h4 class="text-2xl">{{ item.Nombre_Obra }}</h4>
                   <span class="block text-sm text-gray-500">{{ item.Descripcion }}</span>

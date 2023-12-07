@@ -32,23 +32,36 @@ Ctll.GetOneArtista = async (req, res) => {
 }
 
 Ctll.SaveArtista = async (req, res) => {
-    const { Persona_ID, Descripcion_Blog, Imagen } = req.body;
-    const ifArtistaThis = await prisma.tbb_artistas.findUnique({ where: { Persona_ID } })
-    if(!ifArtistaThis){
-        const send = await prisma.tbb_artistas.create({
-            data: {
-                Descripcion_Blog,
-                Imagen
-            }
+    try {
+        const { Persona_ID, Descripcion_Blog, Imagen } = req.body;
+        const ifArtistaThis = await prisma.tbb_artistas.findUnique({ where: { Persona_ID } });
+
+        if (!ifArtistaThis) {
+            const send = await prisma.tbb_artistas.create({
+                data: {
+                    Descripcion_Blog: "Artista con una visión única que utiliza colores intensos para expresar emociones en constante cambio.\n",
+                    Imagen: "https://images.ecestaticos.com/4p56t84xWYPuXzT3ZBiUlj54RAs=/70x0:2638x1809/992x700/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F317%2Fae0%2F456%2F317ae0456e63bd37ce7fa809d5955672.jpg\n",
+                    Fecha_Actualizacion: date, // Corrección aquí
+                },
+            });
+
+            res.status(200).json({
+                message: "Creación completa",
+                success: true,
+                data: send,
+            });
+        } else {
+            res.status(400).json({ message: 'Error, la Persona_ID ya está en uso.' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Error interno del servidor",
         });
-        res.status(200).json({
-            menssage: "Creacion completa",
-            success: true,
-            data: send
-        })
-    }else res.status(404).json({mensaje:'Error, el ID ya esta en uso.'})
-    
-}
+    }
+};
+
 
 Ctll.PutArtista = async (req, res) => {
     const [Persona_ID, Fecha_Actualizacion] = [Number(req.params.ID), date];

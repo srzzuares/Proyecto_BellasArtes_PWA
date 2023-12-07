@@ -1,132 +1,164 @@
-const Ctll = {}
+const Ctll = {};
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const date = new Date();
 
 Ctll.GetPintura = async (req, res) => {
-    const resultados = await prisma.tbb_pinturas.findMany();
-    res.status(200).json({
-        success: true,
-        data: resultados,
-    });
-}
+    try {
+        const resultados = await prisma.tbb_pinturas.findMany();
+        res.status(200).json({
+            success: true,
+            data: resultados,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Error interno del servidor",
+        });
+    }
+};
 
 Ctll.GetOnePintura = async (req, res) => {
-    const ID = Number(req.params.ID);
-    const Id_Pintura = await prisma.tbb_pinturas.findUnique({ 
-        where: { ID },
-    });
-    
-    if (!Id_Pintura) {
-        res.status(404).json({
+    try {
+        const ID = Number(req.params.ID);
+        const pintura = await prisma.tbb_pinturas.findUnique({ where: { ID } });
+
+        if (!pintura) {
+            res.status(404).json({
+                success: false,
+                message: "Pintura no encontrada",
+            });
+        } else {
+            res.status(200).json({
+                success: true,
+                data: pintura,
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
             success: false,
-            message: "Pintura no encontrado",
-        });
-    }else {
-        res.status(200).json({
-            success: true,
-            data: Id_Pintura,
+            message: "Error interno del servidor",
         });
     }
-    
-}
+};
 
 Ctll.SavePintura = async (req, res) => {
-    const { ID, Nombre_Obra, Imagen, Descripcion, Artista_ID, Fecha_Creacion, Tecnica, Genero_ID, Costo} = req.body;
-    const ifPinturaThis = await prisma.tbb_pinturas.findUnique({ where: { ID } })
-    if(!ifPinturaThis){
-        const send = await prisma.tbb_pinturas.create({
-            data: {
-                Nombre_Obra,
-                Imagen,
-                Descripcion,
-                Artista_ID,
-                Fecha_Creacion,
-                Tecnica,
-                Genero_ID,
-                Costo
-            }
-        });
-        res.status(200).json({
-            menssage: "Creacion completa",
-            success: true,
-            data: send
-        })
-    }else res.status(404).json({mensaje:'Error, el ID ya esta en uso.'})
-    
-}
+    try {
+        const { ID, Nombre_Obra, Imagen, Descripcion, Artista_ID, Fecha_Creacion, Tecnica, Genero_ID, Costo } = req.body;
+        const pinturaExistente = await prisma.tbb_pinturas.findUnique({ where: { ID } });
 
-Ctll.PutPintura = async (req, res) => {
-    const [ID, Fecha_Actualizacion] = [Number(req.params.ID), date];
-    const { Nombre_Obra, Imagen, Descripcion, Artista_ID, Fecha_Creacion, Tecnica, Genero_ID, Costo, Estatus } = req.body;
-    const ifPinturaThis = await prisma.tbb_pinturas.findUnique({ where: { ID } })
-    if(!ifPinturaThis){
-        res.status(404).json({
-            success: false,
-            message: "Pintura no encontrado o ID Incorrecto",
-        });
-    }else{
-        const put = await prisma.tbb_pinturas.update({
-            where: { ID },
-            data: {
-                Nombre_Obra,
-                Imagen,
-                Descripcion,
-                Artista_ID,
-                Fecha_Creacion,
-                Tecnica,
-                Genero_ID,
-                Costo,
-                Estatus,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Actualizacion completa",
-            success: true,
-            data: put
-        });
-    }    
-}
+        if (!pinturaExistente) {
+            const send = await prisma.tbb_pinturas.create({
+                data: {
+                    Nombre_Obra,
+                    Imagen,
+                    Descripcion,
+                    Artista_ID,
+                    Fecha_Creacion,
+                    Tecnica,
+                    Genero_ID,
+                    Costo,
+                    Fecha_Actualizacion: new Date(),
+                },
+            });
 
-Ctll.DelPintura = async (req, res) => {
-    const [ ID, Estatus, Fecha_Actualizacion ] = [Number(req.params.ID) , false, date]
-    const ifPinturaThis = await prisma.tbb_pinturas.findUnique({ where: { ID } })
-    if(ifPinturaThis){
-        if(ifPinturaThis.Estatus){
-            const delEst = await prisma.tbb_pinturas.update({
-            where: { ID },
-            data: {
-                Estatus,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Desactivado completado",
-            success: true,
-            data: delEst
-        });
+            res.status(200).json({
+                message: "Creación completa",
+                success: true,
+                data: send,
+            });
+        } else {
+            res.status(404).json({ message: 'Error, el ID ya está en uso.' });
         }
-        else {
-            const delActEst = await prisma.tbb_pinturas.update({
-            where: { ID },
-            data: {
-                Estatus: true,
-                Fecha_Actualizacion
-            }
-        });
-        res.status(200).json({
-            menssage: "Activado completado",
-            success: true,
-            data: delActEst
-        });
-        }
-    }else{
-        res.status(404).json({
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
             success: false,
-            message: "Pinturaa no encontrada o ID Incorrecto",
+            message: "Error interno del servidor",
         });
     }
-}
+};
+
+Ctll.PutPintura = async (req, res) => {
+    try {
+        const ID = Number(req.params.ID);
+        const { Nombre_Obra, Imagen, Descripcion, Artista_ID, Fecha_Creacion, Tecnica, Genero_ID, Costo, Estatus } = req.body;
+        const pinturaExistente = await prisma.tbb_pinturas.findUnique({ where: { ID } });
+
+        if (!pinturaExistente) {
+            res.status(404).json({
+                success: false,
+                message: "Pintura no encontrada o ID incorrecto",
+            });
+        } else {
+            const put = await prisma.tbb_pinturas.update({
+                where: { ID },
+                data: {
+                    Nombre_Obra,
+                    Imagen,
+                    Descripcion,
+                    Artista_ID,
+                    Fecha_Creacion,
+                    Tecnica,
+                    Genero_ID,
+                    Costo,
+                    Estatus,
+                    Fecha_Actualizacion: new Date(),
+                },
+            });
+
+            res.status(200).json({
+                message: "Actualización completa",
+                success: true,
+                data: put,
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Error interno del servidor",
+        });
+    }
+};
+
+Ctll.DelPintura = async (req, res) => {
+    try {
+        const ID = Number(req.params.ID);
+        const pinturaExistente = await prisma.tbb_pinturas.findUnique({ where: { ID } });
+
+        if (pinturaExistente) {
+            const { Estatus } = pinturaExistente;
+
+            const result = await prisma.tbb_pinturas.update({
+                where: { ID },
+                data: {
+                    Estatus: !Estatus,
+                    Fecha_Actualizacion: new Date(),
+                },
+            });
+
+            const actionMessage = Estatus ? "Desactivado" : "Activado";
+
+            res.status(200).json({
+                message: `${actionMessage} completado`,
+                success: true,
+                data: result,
+            });
+        } else {
+            res.status(404).json({
+                success: false,
+                message: "Pintura no encontrada o ID incorrecto",
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Error interno del servidor",
+        });
+    }
+};
 
 module.exports = Ctll;

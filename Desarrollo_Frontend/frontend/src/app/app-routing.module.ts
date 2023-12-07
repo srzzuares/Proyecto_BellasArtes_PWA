@@ -17,8 +17,9 @@ const routes: Routes = [
 {path: 'login', component:LoginComponent},
 {path: 'signup', component:SignupComponent },
 {path: 'artista', component:ArtistaComponent},
-{path: 'catalogo', component:CatalogoComponent}
-
+{path: 'catalogo', component:CatalogoComponent},
+// Otras rutas
+{ path: '', redirectTo: 'home', pathMatch: 'full' }, // Ruta predeterminada
 ];
 
 @NgModule({

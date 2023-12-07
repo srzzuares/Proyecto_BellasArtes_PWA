@@ -7,12 +7,11 @@
       <div class="grid gap-12 items-center md:grid-cols-3">
           <div *ngFor="let item of artistas">
               <img class="w-64 h-64 mx-auto object-cover rounded-xl" alt="woman" loading="lazy"
-                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO9vJ557N-T0KBrEu2bAJzoeKeVX_XOV3qa0KMBcPnmQ&s" > <!-- Agrega el evento click -->
+              [src]="item.Imagen"> <!-- Agrega el evento click -->
               <div>
                   <span class="block text-sm text-gray-500">{{ item.Descripcion_Blog }}</span>
               </div>
           </div>
-
       </div>
   </div>
 

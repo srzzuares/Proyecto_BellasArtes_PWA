@@ -1,23 +1,23 @@
 -- CreateTable
 CREATE TABLE `tbb_artistas` (
-    `Persona_ID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `Descripcion_Blog` TEXT NULL,
-    `Imagen` BLOB NULL,
+    `Persona_ID` INTEGER NOT NULL AUTO_INCREMENT,
+    `Descripcion_Blog` VARCHAR(1000) NULL,
+    `Imagen` VARCHAR(1000) NULL,
     `Estatus` BOOLEAN NULL DEFAULT true,
-    `Fecha_Registro` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
-    `Fecha_Actualizacion` DATETIME(0) NULL,
+    `Fecha_Registro` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `Fecha_Actualizacion` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`Persona_ID`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `tbb_compra` (
-    `ID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `Usuario_ID` INTEGER UNSIGNED NULL,
-    `Pintura_ID` INTEGER UNSIGNED NULL,
-    `Costo_Final` FLOAT NULL,
-    `Descuento` FLOAT NULL,
-    `Fecha_Venta` DATETIME(0) NULL,
+    `ID` INTEGER NOT NULL AUTO_INCREMENT,
+    `Usuario_ID` INTEGER NOT NULL,
+    `Pintura_ID` INTEGER NOT NULL,
+    `Costo_Final` DOUBLE NULL,
+    `Descuento` DOUBLE NOT NULL,
+    `Fecha_Venta` DATETIME(3) NOT NULL,
 
     INDEX `Pintura_ID`(`Pintura_ID`),
     INDEX `Usuario_ID`(`Usuario_ID`),
@@ -26,34 +26,33 @@ CREATE TABLE `tbb_compra` (
 
 -- CreateTable
 CREATE TABLE `tbb_personas` (
-    `ID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `ID` INTEGER NOT NULL AUTO_INCREMENT,
     `Nombre` VARCHAR(30) NOT NULL,
     `P_Apellido` VARCHAR(30) NOT NULL,
     `S_Apellido` VARCHAR(30) NOT NULL,
     `Nacimiento` DATE NOT NULL,
     `Genero` ENUM('M', 'F', 'N/A') NULL DEFAULT 'N/A',
     `Estatus` BOOLEAN NULL DEFAULT true,
-    `Fecha_Registro` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
-    `Fecha_Actualizacion` DATETIME(0) NULL,
+    `Fecha_Registro` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `Fecha_Actualizacion` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `ID`(`ID`),
     PRIMARY KEY (`ID`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `tbb_pinturas` (
-    `ID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `ID` INTEGER NOT NULL AUTO_INCREMENT,
     `Nombre_Obra` VARCHAR(50) NULL,
-    `Imagen` BLOB NULL,
-    `Descripcion` TEXT NULL,
-    `Artista_ID` INTEGER UNSIGNED NULL,
+    `Imagen` VARCHAR(1000) NULL,
+    `Descripcion` VARCHAR(1000) NULL,
+    `Artista_ID` INTEGER NOT NULL,
     `Fecha_Creacion` DATE NULL,
     `Tecnica` VARCHAR(20) NULL,
-    `Genero_ID` INTEGER UNSIGNED NULL,
-    `Costo` FLOAT NULL,
+    `Genero_ID` INTEGER NOT NULL,
+    `Costo` DOUBLE NOT NULL,
     `Estatus` BOOLEAN NOT NULL DEFAULT true,
-    `Fecha_Registro` DATETIME(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
-    `Fecha_Actualizacion` DATETIME(0) NULL,
+    `Fecha_Registro` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `Fecha_Actualizacion` DATETIME(3) NOT NULL,
 
     INDEX `Artista_ID`(`Artista_ID`),
     INDEX `Genero_ID`(`Genero_ID`),
@@ -62,14 +61,14 @@ CREATE TABLE `tbb_pinturas` (
 
 -- CreateTable
 CREATE TABLE `tbb_usuarios` (
-    `Persona_ID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `Persona_ID` INTEGER NOT NULL AUTO_INCREMENT,
     `Nombre_Usuario` VARCHAR(30) NULL,
     `Correo` VARCHAR(100) NULL,
     `Contrasena` VARCHAR(100) NULL,
-    `Rol_ID` INTEGER UNSIGNED NULL DEFAULT 1,
+    `Rol_ID` INTEGER NOT NULL,
     `Estatus` BOOLEAN NULL DEFAULT true,
-    `Fecha_Registro` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
-    `Fecha_Actualizacion` DATETIME(0) NULL,
+    `Fecha_Registro` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `Fecha_Actualizacion` DATETIME(3) NOT NULL,
 
     INDEX `Rol_ID`(`Rol_ID`),
     PRIMARY KEY (`Persona_ID`)
@@ -77,12 +76,12 @@ CREATE TABLE `tbb_usuarios` (
 
 -- CreateTable
 CREATE TABLE `tbc_genero` (
-    `ID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    `ID` INTEGER NOT NULL AUTO_INCREMENT,
     `Nombre_Genero` VARCHAR(30) NULL,
-    `Genero_Padre` INTEGER UNSIGNED NULL,
+    `Genero_Padre` INTEGER NOT NULL,
     `Estatus` BOOLEAN NULL DEFAULT true,
-    `Fecha_Registro` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
-    `Fecha_Actualizacion` DATETIME(0) NULL,
+    `Fecha_Registro` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `Fecha_Actualizacion` DATETIME(3) NOT NULL,
 
     INDEX `Genero_Padre`(`Genero_Padre`),
     PRIMARY KEY (`ID`)
@@ -90,12 +89,12 @@ CREATE TABLE `tbc_genero` (
 
 -- CreateTable
 CREATE TABLE `tbc_roles` (
-    `ID` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-    `Nombre` VARCHAR(30) NULL,
-    `Descripcion` TEXT NULL,
-    `Estatus` BOOLEAN NULL DEFAULT true,
-    `Fecha_Registro` DATETIME(0) NULL DEFAULT CURRENT_TIMESTAMP(0),
-    `Fecha_Actualizacion` DATETIME(0) NULL,
+    `ID` INTEGER NOT NULL AUTO_INCREMENT,
+    `Nombre` VARCHAR(30) NOT NULL,
+    `Descripcion` VARCHAR(300) NOT NULL,
+    `Estatus` BOOLEAN NOT NULL DEFAULT true,
+    `Fecha_Registro` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `Fecha_Actualizacion` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`ID`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
