@@ -1,7 +1,6 @@
 const Ctll = {};
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const date = new Date();
 
 Ctll.GetPerson = async (req, res) => {
     try {
@@ -22,7 +21,7 @@ Ctll.GetPerson = async (req, res) => {
 Ctll.GetOnePerson = async (req, res) => {
     try {
         const ID = Number(req.params.ID);
-        const Id_Person = await prisma.tbb_personas.findUnique({  // Corrección aquí
+        const Id_Person = await prisma.tbb_personas.findUnique({
             where: {
                 ID: ID,
             },
@@ -46,35 +45,32 @@ Ctll.GetOnePerson = async (req, res) => {
             message: "Error interno del servidor",
         });
     }
-};
-
-
-Ctll.SavePerson = async (req, res) => {
+};Ctll.SavePerson = async (req, res) => {
     try {
-        const { ID, Nombre, P_Apellido, S_Apellido, Nacimiento, Genero } = req.body;
-        const ifPersonThis = await prisma.tbb_personas.findUnique({ where: { ID } });
+        const { Nombre, P_Apellido, S_Apellido, Nacimiento, Genero } = req.body;
 
-        if (!ifPersonThis) {
-            const send = await prisma.tbb_personas.create({
-                data: {
-                    ID,
-                    Nombre,
-                    P_Apellido,
-                    S_Apellido,
-                    Nacimiento,
-                    Genero,
-                    Fecha_Actualizacion: date, // Corrección aquí
-                },
-            });
-
-            res.status(200).json({
-                message: "Creación completa",
-                success: true,
-                data: send,
-            });
-        } else {
-            res.status(400).json({ message: 'Error, el ID ya está en uso.' });
+        // Verificar si los campos requeridos están presentes
+        if (!Nombre || !P_Apellido || !S_Apellido || !Nacimiento || !Genero) {
+            return res.status(400).json({ message: 'Error, campos incompletos.' });
         }
+
+        // Crear una nueva persona
+        const send = await prisma.tbb_personas.create({
+            data: {
+                Nombre,
+                P_Apellido,
+                S_Apellido,
+                Nacimiento,
+                Genero,
+                Fecha_Actualizacion: new Date(),
+            },
+        });
+
+        res.status(201).json({
+            message: "Creación completa",
+            success: true,
+            data: send,
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -87,8 +83,9 @@ Ctll.SavePerson = async (req, res) => {
 
 Ctll.PutPerson = async (req, res) => {
     try {
-        const [ID, Fecha_Actualizacion] = [Number(req.params.ID), date];
+        const { ID } = req.params;
         const { Nombre, P_Apellido, S_Apellido, Nacimiento, Genero, Estatus } = req.body;
+        const Fecha_Actualizacion = prisma.now();
         const ifPersonThis = await prisma.tbb_personas.findUnique({ where: { ID } });
 
         if (!ifPersonThis) {
@@ -106,7 +103,7 @@ Ctll.PutPerson = async (req, res) => {
                     Nacimiento,
                     Genero,
                     Estatus,
-                    Fecha_Actualizacion,
+                    Fecha_Actualizacion: { set: Fecha_Actualizacion },
                 },
             });
 
@@ -127,7 +124,9 @@ Ctll.PutPerson = async (req, res) => {
 
 Ctll.DelPerson = async (req, res) => {
     try {
-        const [ID, Estatus, Fecha_Actualizacion] = [Number(req.params.ID), false, date];
+        const { ID } = req.params;
+        const Estatus = false;
+        const Fecha_Actualizacion = prisma.now();
         const ifPersonThis = await prisma.tbb_personas.findUnique({ where: { ID } });
 
         if (ifPersonThis) {
@@ -136,7 +135,7 @@ Ctll.DelPerson = async (req, res) => {
                     where: { ID },
                     data: {
                         Estatus,
-                        Fecha_Actualizacion,
+                        Fecha_Actualizacion: { set: Fecha_Actualizacion },
                     },
                 });
 
@@ -150,7 +149,7 @@ Ctll.DelPerson = async (req, res) => {
                     where: { ID },
                     data: {
                         Estatus: true,
-                        Fecha_Actualizacion,
+                        Fecha_Actualizacion: { set: Fecha_Actualizacion },
                     },
                 });
 

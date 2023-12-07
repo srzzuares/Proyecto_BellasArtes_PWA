@@ -45,32 +45,31 @@ Ctll.GetOnePintura = async (req, res) => {
 
 Ctll.SavePintura = async (req, res) => {
     try {
-        const { ID, Nombre_Obra, Imagen, Descripcion, Artista_ID, Fecha_Creacion, Tecnica, Genero_ID, Costo } = req.body;
-        const pinturaExistente = await prisma.tbb_pinturas.findUnique({ where: { ID } });
+        const { Nombre_Obra, Descripcion, Artista_ID, Tecnica, Genero_ID, Costo } = req.body;
 
-        if (!pinturaExistente) {
-            const send = await prisma.tbb_pinturas.create({
-                data: {
-                    Nombre_Obra,
-                    Imagen,
-                    Descripcion,
-                    Artista_ID,
-                    Fecha_Creacion,
-                    Tecnica,
-                    Genero_ID,
-                    Costo,
-                    Fecha_Actualizacion: new Date(),
-                },
-            });
-
-            res.status(200).json({
-                message: "Creación completa",
-                success: true,
-                data: send,
-            });
-        } else {
-            res.status(404).json({ message: 'Error, el ID ya está en uso.' });
+        // Verificar si los campos requeridos están presentes
+        if (!Nombre_Obra || !Artista_ID || !Genero_ID || !Costo) {
+            return res.status(400).json({ message: 'Error, campos incompletos.' });
         }
+
+        // Crear una nueva pintura
+        const send = await prisma.tbb_pinturas.create({
+            data: {
+                Nombre_Obra,
+                Descripcion,
+                Artista_ID,
+                Tecnica,
+                Genero_ID,
+                Costo,
+                Fecha_Actualizacion: new Date(),
+            },
+        });
+
+        res.status(201).json({
+            message: "Creación completa",
+            success: true,
+            data: send,
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -79,6 +78,7 @@ Ctll.SavePintura = async (req, res) => {
         });
     }
 };
+
 
 Ctll.PutPintura = async (req, res) => {
     try {
